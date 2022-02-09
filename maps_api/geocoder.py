@@ -42,13 +42,11 @@ def get_ll_spn(address):
     return ll, spn
 
 
-def get_nearest_object(ll, spn, map_type="map", add_params=None):
-    # Собираем параметры для запроса к StaticMapsAPI:
+def show_map(ll, spn, map_type="map", add_params=None):
     map_params = {
         "ll": ll,
         "spn": spn,
-        "l": map_type,
-        "pt": f"{ll},pm2rdm"
+        "l": map_type
     }
     if isinstance(add_params, dict):
         map_params.update(add_params)
@@ -56,8 +54,4 @@ def get_nearest_object(ll, spn, map_type="map", add_params=None):
     map_api_server = "http://static-maps.yandex.ru/1.x/"
     # ... и выполняем запрос
     response = requests.get(map_api_server, params=map_params)
-    return response
-
-
-def show_map(response):
     Image.open(BytesIO(response.content)).show()
