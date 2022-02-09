@@ -19,7 +19,7 @@ radians_l = math.radians((a_lat + b_lat) / 2)
 lat_lon_factor = math.cos(radians_l)
 
 dx = abs(a_lon - b_lon) * degree_to_meters_factors * lat_lon_factor
-dy = abs(a_lat - b_lat) * degree_to_meters_factors * lat_lon_factor
+dy = abs(a_lat - b_lat) * degree_to_meters_factors
 
 distance = math.sqrt(dx * dx + dy * dy)
 print(name, address, work_time, str(distance) + " м.", sep='\n')
